@@ -1,7 +1,7 @@
 const multer = require('multer');
 const auth = require('jsonwebtoken');
 
-const product = require('../model/myproduct');
+const product = require('../model/product');
 
 exports.newmyProduct = (req, res, next) => {
     console.log(req.user.email)

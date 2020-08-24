@@ -14,7 +14,7 @@ base_price:{
     required:true,
 },
 start_date:{
-    type: String,
+    type: Date,
     required:true,
 },
 product_Image:{
@@ -22,7 +22,7 @@ product_Image:{
     required:true,
 },
 end_date:{
-    type:String,
+    type:Date,
     required:true,
 },
 highest_bid:{

@@ -25,7 +25,8 @@ exports.newProduct = (req, res, next) => {
 }
 
 exports.products = (req, res, next) => {
-    product.find().then(product => {
+    let today =new Date();
+    product.find({end_date: {$gte: today}}).then(product => {
         res.send(product)
     }).catch(err => res.send(err))
 }
