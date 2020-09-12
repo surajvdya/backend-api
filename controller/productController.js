@@ -25,10 +25,20 @@ exports.newProduct = (req, res, next) => {
 }
 
 exports.products = (req, res, next) => {
-    let today =new Date();
-    product.find({end_date: {$gte: today}}).then(product => {
+    product.find().then(product => {
         res.send(product)
     }).catch(err => res.send(err))
+}
+
+exports.fproducts = (req, res, next) => {
+    console.log("fproducts");
+    let today =new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
+    product.find({end_date: {$gte: today}}).then(product => {
+    console.log("fproducts new",product);
+
+        res.send(product)
+    }).catch(err => res.send(err))
+    
 }
 
 exports.oneproducts = (req, res, next) => {
