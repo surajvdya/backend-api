@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
 const auth = require('jsonwebtoken');
+const moment = require('moment');
+
 
 const product = require('../model/product');
 
@@ -34,7 +36,10 @@ exports.fproducts = (req, res, next) => {
     console.log("fproducts");
     let today =new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
     product.find({end_date: {$gte: today}}).then(product => {
-    console.log("fproducts new",product);
+    let formated_date= moment(product.end_date).format("MMM Do YY"); 
+    product.end_date= formated_date;
+    // console.log("date",formated_date);
+    console.log("fpro new",product);
 
         res.send(product)
     }).catch(err => res.send(err))
